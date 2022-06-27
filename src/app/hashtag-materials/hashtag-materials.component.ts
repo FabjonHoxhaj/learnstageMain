@@ -1,5 +1,8 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { CrudService } from '../crud.service';
+import { FileUploadService } from '../file-upload.service';
+import { FileUpload } from '../models/file-upload.model';
+import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -10,7 +13,7 @@ import { map } from 'rxjs/operators';
 export class HashtagMaterialsComponent implements OnInit {
 
   selectedFiles?: FileList;
-
+  currentFileUpload?: FileUpload;
   fileUploads?: any[];
 
   stars = [1, 2, 3, 4, 5];
@@ -18,21 +21,35 @@ export class HashtagMaterialsComponent implements OnInit {
   hoverState = 0;
   overlayHide: boolean = false;
 
+  files: any[] = [];
 
-  constructor() { }
+
+  constructor(private hashtagFile: CrudService, private uploadService: FileUploadService, private activate: ActivatedRoute) { }
 
   ngOnInit(): void {
-    
+    this.hashtagFile.readFiles(this.activate.snapshot.paramMap.get("name"));
+    this.hashtagFile.getFileName().subscribe((data)=> {
+      this.files = [];
+      this.files = data;
+    })
   }
 
-  selectFile(event: any): void {
-    this.selectedFiles = event.target.files;
-  }
+selectFile(event: any): void {
+  this.selectedFiles = event.target.files;
+}
 
-  upload(): void {
-    
+upload(): void {
+  if (this.selectedFiles) {
+    const file: File | null = this.selectedFiles.item(0);
+    this.selectedFiles = undefined;
+    if (file) {
+      this.currentFileUpload = new FileUpload(file);
+      this.uploadService.pushFileToStorage(this.activate.snapshot.paramMap.get("name"), this.currentFileUpload);
+    }
   }
-
+  const filename = this.uploadService.saveFileName();
+  const url = this.uploadService.saveURL();
+}
 
 onStarEnter(starId: any) {
   this.hoverState = starId;
@@ -48,10 +65,6 @@ onStarClicked(starId: any) {
 }
 
 
-onTagging(buttonHide: boolean) {
-this.overlayHide = buttonHide;
-}
-
 closeModal() {
     this.overlayHide = false;
 }
@@ -59,5 +72,9 @@ closeModal() {
 createTag() {
   console.log("Test");
 }
+
+onTagging(buttonHide: boolean) {
+  this.overlayHide = buttonHide;
+  }
 
 }

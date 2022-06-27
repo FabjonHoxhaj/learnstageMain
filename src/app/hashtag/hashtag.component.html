@@ -12,14 +12,14 @@
     <div class="dialog">
         <span class="close" (click)="closeButton()">&times;</span>
         <input id="inputValue" type="text" placeholder="#"><br>
-        <div class="btnCon"><button class="btnModal" (click)="create()">Erstellen</button></div>
+        <div class="btnCon"><button class="btnModal" (click)="createHashtag()">Erstellen</button></div>
     </div>
 </div>
 
 <div class="containerHashtags">
     <div class="containerWrap">
-      <div *ngFor="let array of arraySet">
-         <div routerLink="/materials" class="items">{{array}}</div>
+      <div *ngFor="let hashtag of arraySet">
+         <div class="items" [routerLink]="['/materials', hashtag.name]">{{hashtag.name}}</div>
       </div>
     </div>
 </div>
