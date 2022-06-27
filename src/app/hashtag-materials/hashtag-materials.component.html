@@ -1,0 +1,43 @@
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="containerInput">
+            <label>
+                <input type="file" (change)="selectFile($event)" hidden /> <i class="material-icons">add</i>
+            </label>
+        </div>
+        <button class="upload" [disabled]="!selectedFiles" (click)="upload()">
+            <i class="material-icons">file_upload</i>
+        </button>
+    </div>
+ <br>
+    <div class="line"></div>
+    <div class="containerUploads" *ngFor="let file of fileUploads">
+        <div class="fileIcon"><i class="material-icons">download_for_offline</i></div>
+        <div class="fileName">
+            <div>{{file.name}}
+               <div *ngIf="overlayHide==true">
+                 <div class="overlay"></div>
+                 <div class="dialogTag">
+                     <div class="headlineCont"><h2>Dein Tag</h2></div>
+                    <span class="close" (click)="closeModal()">&times;</span>
+                    <input id="inputValue" type="text"><br>
+                    <div class="btnCon"><button (click)="createTag()" class="btnModal">Erstellen</button></div>
+                </div>
+               </div>
+
+            </div>
+            <div>
+              <ng-container *ngFor="let star of stars;">
+                <app-star-rating (starEnter)="onStarEnter($event)" (starLeave)="onStarLeave()" 
+                (starClicked)="onStarClicked($event)" [starId]="star" [rating]="hoverState || rating">
+                </app-star-rating>
+              </ng-container>
+              </div>
+              <div class="containerHam"><app-hamburger-tag (tag)="onTagging($event)"></app-hamburger-tag></div>
+        </div>
+    </div>
+</body>

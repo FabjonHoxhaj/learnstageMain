@@ -1,0 +1,112 @@
+.container {
+    background-color: #e4d5c5;
+    margin-bottom: 20px;
+    height: 30vh;
+}
+
+p {
+    color: #002b44;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 10%;
+    padding-top: 2%;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 2%;
+}
+
+button {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    color: #002b44;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    padding: 10px;
+    cursor: pointer;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.body-overlay {  /*Hiermit bekommen wir ein halbtransperantes Overlay, welches sich über die gesmte Seite erstreckt*/
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+   background-color: #00000099;
+}
+
+.dialog {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 25px;
+    background-color: white;
+    border-radius: 8px;
+    color: black;
+    box-shadow: 8px 8px 16px rgba(255, 255, 255, 0.1);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    font-size: 32px;
+    line-height: 6px;
+    color: rgba(0, 0, 0, 0.6);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btnModal {
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    background-color: #e4d5c5;
+    color: #002b44;
+}
+
+.btnCon {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.cont {
+    display: flex;
+    justify-content: center;
+    width: 65%;
+    flex-wrap: wrap;
+}
+
+.containerHashtags {
+    display: flex;
+    justify-content: center;
+}
+
+.containerWrap {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 65%;
+}
+
+.items {
+    color: #002b44;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 5px;
+    font-size: 14px;
+    border: 0.1px solid gray;
+    padding: 2px;   
+}
+
+.items:hover {
+    background-color: #e4d5c5;
+    transition: all 350ms;
+    cursor: pointer;
+}

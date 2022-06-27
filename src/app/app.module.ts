@@ -15,6 +15,12 @@ import { FooterComponent } from './footer/footer.component';
 import { DatenschutzComponent } from './datenschutz/datenschutz.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { ImpressumComponent } from './impressum/impressum.component';
+import { HashtagComponent } from './hashtag/hashtag.component';
+import { HashtagMaterialsComponent } from './hashtag-materials/hashtag-materials.component';
+import { StarRatingComponent } from './star-rating/star-rating.component';
+import { HamburgerTagComponent } from './hamburger-tag/hamburger-tag.component';
+import { MyTagsComponent } from './my-tags/my-tags.component';
+import { TagStudentsComponent } from './tag-students/tag-students.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +34,13 @@ import { ImpressumComponent } from './impressum/impressum.component';
     FooterComponent,
     DatenschutzComponent,
     ContactFormComponent,
-    ImpressumComponent
+    ImpressumComponent,
+    HashtagComponent,
+    HashtagMaterialsComponent,
+    StarRatingComponent,
+    HamburgerTagComponent,
+    MyTagsComponent,
+    TagStudentsComponent
   ],
   imports: [
     BrowserModule,

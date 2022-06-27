@@ -1,0 +1,25 @@
+<div class="container">
+    <p><strong>Kreiere deinen eigenen Hashtag und sammele<br>
+            diverse Lernmaterialien unter diesem Tag!</strong></p>
+
+    <div class="btnContainer">
+        <button (click)="newHashtag()"><strong>new HashTag+</strong></button>
+    </div>
+</div>
+
+<div *ngIf="isHidden==true">
+    <div class="body-overlay"></div>
+    <div class="dialog">
+        <span class="close" (click)="closeButton()">&times;</span>
+        <input id="inputValue" type="text" placeholder="#"><br>
+        <div class="btnCon"><button class="btnModal" (click)="create()">Erstellen</button></div>
+    </div>
+</div>
+
+<div class="containerHashtags">
+    <div class="containerWrap">
+      <div *ngFor="let array of arraySet">
+         <div routerLink="/materials" class="items">{{array}}</div>
+      </div>
+    </div>
+</div>
