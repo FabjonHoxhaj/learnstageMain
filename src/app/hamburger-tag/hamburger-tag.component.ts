@@ -44,19 +44,21 @@ export class HamburgerTagComponent implements OnInit {
   overlay() {
     //this.tag.emit(this.buttonHide);
     this.overlayHide = true;
-    // this.menuHidden = true;
-    // this.hamburgerHide = true;
-    // this.closeHidden = false;
+    this.menuHidden = true;
+    this.hamburgerHide = true;
+    this.closeHidden = false;
   }
 
   closeModal() {
     this.overlayHide = false;
+    this.hamburgerHide = false;
 }
 
 createTag() {
   const input = (<HTMLInputElement>document.getElementById("inputValue")).value;
   this.crud.createPersonalHashtag(input, this.filename);
   console.log(input);
+  this.hamburgerHide = false;
 }
 
 }
