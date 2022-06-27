@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    justify-content: center;
+    color: #002b44;
+    font-size: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 60px;
+}
+
+.containerHashtags {
+    display: flex;
+    justify-content: center;
+}
+
+.containerWrap {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 65%;
+}
+
+.items {
+    color: #002b44;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 5px;
+    font-size: 14px;
+    border: 0.1px solid gray;
+    padding: 2px;   
+}
+
+.items:hover {
+    background-color: #e4d5c5;
+    transition: all 350ms;
+    cursor: pointer;
+}

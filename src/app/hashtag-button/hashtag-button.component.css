@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.container2 {
+    background-color: #002b44;
+    width: 30%;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 2%;
+}
+
+span {
+    color: white;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 2%;
+}
+
+.container3 {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    color: #002b44;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    padding: 10px;
+    cursor: pointer;
+}
