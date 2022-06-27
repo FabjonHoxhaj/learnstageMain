@@ -1,27 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../http.service';
+import { CrudService } from '../crud.service';
 
 @Component({
   selector: 'app-hashtag',
   templateUrl: './hashtag.component.html',
-  styleUrls: ['./hashtag.component.css'],
-  providers: [HttpService]
+  styleUrls: ['./hashtag.component.css']
 })
 export class HashtagComponent implements OnInit {
 
-  constructor(private http: HttpService) { }
+  constructor(private item: CrudService) { }
 
-  ngOnInit(): void {
-    this.http.getData().subscribe(
-      (data: any) => {
-        for (let i of Object.values(data))
-          this.arraySet.add(i)
-      });
-  }
-
-  arraySet = new Set();
+  arraySet: any = new Set();
+  personalTags: []= [];
   isHidden: boolean = false;
   showHashtags: boolean = false;
+
+  ngOnInit(): void {
+    this.item.readHashtags().subscribe(items => {
+      this.arraySet= new Set();
+      for (let i of Object.values(items))
+            this.arraySet.add(i)
+    })
+    this.item.readPersonalTags().subscribe((data: any) => {
+      this.personalTags = data;
+      console.log(this.personalTags);
+    });
+  }
 
 
   closeButton() {
@@ -32,15 +36,23 @@ export class HashtagComponent implements OnInit {
     this.isHidden = true;
   }
 
-  create() {
+  createHashtag() {
     let input = (<HTMLInputElement>document.getElementById("inputValue")).value;
-    this.arraySet.add(input);
+    const hashtag = input;
+    if(hashtag.startsWith("#")) {
+      this.item.createHashtags(input);
+    }
+   else {
+    this.item.createHashtags("#" + input);
+   }
 
-    this.http.sendDataHashtags(input).subscribe(
-      data => console.log(data),
-      error => console.error(error));
+   this.closeButton();
+   
+  }
 
-    this.closeButton();
+  loadHashtagFiles(hashtagString: any) {
+    this.item.readFiles(hashtagString);
+    this.item.saveHashtag(hashtagString);
   }
 
 }

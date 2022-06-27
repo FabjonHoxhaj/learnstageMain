@@ -14,7 +14,7 @@ const routes: Routes = [{ path: "", redirectTo: "home", pathMatch: "full" },
 { path: "contact", component: ContactFormComponent },
 { path: "imp", component: ImpressumComponent },
 { path: "hashtag", component: HashtagComponent },
-{ path: "materials", component: HashtagMaterialsComponent },
+{ path: "materials/:name", component: HashtagMaterialsComponent },
 { path: "datenschutz", component: DatenschutzComponent },
 { path: "tagStudents", component: TagStudentsComponent},
 { path: "myTags", component: MyTagsComponent}];

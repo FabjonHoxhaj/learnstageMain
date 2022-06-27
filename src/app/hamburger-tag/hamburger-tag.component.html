@@ -11,8 +11,16 @@
 	<div *ngIf="closeHidden==true">
      <span class="material-icons">close</span>
 	</div>
+
+    <div *ngIf="overlayHide==true">
+        <div class="overlay"></div>
+        <div class="dialogTag">
+            <div class="headlineCont"><h2>Dein Tag</h2></div>
+           <span class="close" (click)="closeModal()">&times;</span>
+           <input id="inputValue" type="text"><br>
+           <div class="btnCon"><button (click)="createTag()" class="btnModal">Erstellen</button></div>
+       </div>
 </div>
 <div class="dropdown-content" *ngIf="menuHidden==false">
-   <a (click)="tagging()">Tag setzen</a>
-   <a>Datei herunterladen</a>
+   <a (click)="overlay()">Tag setzen</a>
 </div>

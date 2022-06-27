@@ -1,4 +1,6 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { CrudService } from '../crud.service';
+
 
 @Component({
   selector: 'app-hamburger-tag',
@@ -6,15 +8,18 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
   styleUrls: ['./hamburger-tag.component.css']
 })
 export class HamburgerTagComponent implements OnInit {
+  @Input() filename: any = "";
 
-  @Output() tag: EventEmitter<boolean> = new EventEmitter();
+ // @Output() tag: EventEmitter<boolean> = new EventEmitter();
   menuHidden: boolean = true;
   hamburgerHide: boolean = true;
   closeHidden: boolean = false;
   zaehler: number = 0;
   buttonHide: boolean = true;
+  overlayHide: boolean = false;
 
-  constructor() { }
+
+  constructor(private crud: CrudService) { }
 
   ngOnInit(): void {
   }
@@ -36,13 +41,22 @@ export class HamburgerTagComponent implements OnInit {
     }  
   }
 
-  tagging() {
-    this.tag.emit(this.buttonHide);
-    this.menuHidden = true;
-    this.hamburgerHide = true;
-    this.closeHidden = false;
-  
+  overlay() {
+    //this.tag.emit(this.buttonHide);
+    this.overlayHide = true;
+    // this.menuHidden = true;
+    // this.hamburgerHide = true;
+    // this.closeHidden = false;
   }
 
+  closeModal() {
+    this.overlayHide = false;
+}
+
+createTag() {
+  const input = (<HTMLInputElement>document.getElementById("inputValue")).value;
+  this.crud.createPersonalHashtag(input, this.filename);
+  console.log(input);
+}
 
 }
