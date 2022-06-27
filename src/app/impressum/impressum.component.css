@@ -1,0 +1,17 @@
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #002b44;
+    display: flex;
+    justify-content: center;
+    background-color: #e4d5c5;
+    font-size: 30px;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+}

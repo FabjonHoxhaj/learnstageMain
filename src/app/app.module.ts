@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,9 @@ import { AsideTagsComponent } from './aside-tags/aside-tags.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HashtagButtonComponent } from './hashtag-button/hashtag-button.component';
 import { FooterComponent } from './footer/footer.component';
+import { DatenschutzComponent } from './datenschutz/datenschutz.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
+import { ImpressumComponent } from './impressum/impressum.component';
 
 @NgModule({
   declarations: [
@@ -21,11 +25,15 @@ import { FooterComponent } from './footer/footer.component';
     MainComponent,
     AsideTagsComponent,
     HashtagButtonComponent,
-    FooterComponent
+    FooterComponent,
+    DatenschutzComponent,
+    ContactFormComponent,
+    ImpressumComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [],
