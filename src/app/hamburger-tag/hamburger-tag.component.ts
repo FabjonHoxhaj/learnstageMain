@@ -10,7 +10,6 @@ import { CrudService } from '../crud.service';
 export class HamburgerTagComponent implements OnInit {
   @Input() filename: any = "";
 
- // @Output() tag: EventEmitter<boolean> = new EventEmitter();
   menuHidden: boolean = true;
   hamburgerHide: boolean = true;
   closeHidden: boolean = false;
@@ -41,17 +40,16 @@ export class HamburgerTagComponent implements OnInit {
     }  
   }
 
-  overlay() {
-    //this.tag.emit(this.buttonHide);
+  tagging() {
     this.overlayHide = true;
     this.menuHidden = true;
-    this.hamburgerHide = true;
-    this.closeHidden = false;
+    this.closeHidden = true;
   }
 
   closeModal() {
     this.overlayHide = false;
-    this.hamburgerHide = false;
+    this.hamburgerHide = true;
+    this.closeHidden = false;
 }
 
 createTag() {
@@ -59,6 +57,7 @@ createTag() {
   this.crud.createPersonalHashtag(input, this.filename);
   console.log(input);
   this.hamburgerHide = false;
+  this.closeModal();
 }
 
 }

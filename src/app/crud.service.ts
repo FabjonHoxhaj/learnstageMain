@@ -50,7 +50,7 @@ export class CrudService {
     });
   }
 
-  readPersonalTags(): any{
+  readPersonalHashtags(): any{
     return this.firestore.collection("users").doc("fabjon");
   }
 
