@@ -13,7 +13,7 @@ export class HashtagComponent implements OnInit {
   arraySet: any = new Set();
   personalTags: []= [];
   isHidden: boolean = false;
-  showHashtags: boolean = false;
+
 
   ngOnInit(): void {
     this.item.readHashtags().subscribe(items => {
@@ -21,7 +21,7 @@ export class HashtagComponent implements OnInit {
       for (let i of Object.values(items))
             this.arraySet.add(i)
     })
-    this.item.readPersonalTags().subscribe((data: any) => {
+    this.item.readPersonalHashtags().subscribe((data: any) => {
       this.personalTags = data;
       console.log(this.personalTags);
     });

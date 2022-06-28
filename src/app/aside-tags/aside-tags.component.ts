@@ -1,26 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../http.service';
+import { CrudService } from '../crud.service';
 
 @Component({
   selector: 'app-aside-tags',
   templateUrl: './aside-tags.component.html',
-  styleUrls: ['./aside-tags.component.css'],
-  providers:[HttpService]
+  styleUrls: ['./aside-tags.component.css']
 })
 export class AsideTagsComponent implements OnInit {
 
-  constructor(private http: HttpService) { }
+  constructor(private item: CrudService) { }
 
-  hashtags = new Set();
+  arraySet: any = new Set();
+  personalTags: []= [];
 
   ngOnInit(): void {
-    this.http.getData().subscribe(
-      (data: any) => {
-        for (let i of Object.values(data))
-          if(this.hashtags.size<=19) {
-            this.hashtags.add(i)
-          }
-      });
+    this.item.readHashtags().subscribe(items => {
+      this.arraySet= new Set();
+      for (let i of Object.values(items))
+            this.arraySet.add(i)
+    })
+    this.item.readPersonalHashtags().subscribe((data: any) => {
+      this.personalTags = data;
+      console.log(this.personalTags);
+    });
   }
 
 }
