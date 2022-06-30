@@ -13,6 +13,8 @@ export class CrudService {
   constructor(private firestore: AngularFirestore, ) { }
 
   fileName: BehaviorSubject<[]> = new BehaviorSubject([]);
+  personalTagNames: BehaviorSubject<[]> = new BehaviorSubject([]);
+  personalTags: BehaviorSubject<[]> = new BehaviorSubject([]);
   hashtag: BehaviorSubject<string> = new BehaviorSubject("");
   downloadURL: BehaviorSubject<string> = new BehaviorSubject(" ");
 
@@ -30,12 +32,23 @@ export class CrudService {
 
   createPersonalHashtag(input: string, filename: string) {
     const merkel = this.firestore.collection("users").doc("fabjon");
-//lesen der subcollections, lesen der subcollection aus docuemnt field
-//input der subcollection hinzufügen
-//setter mit neuer Subcollection aufrufen
-
-    merkel.set({subcollections: [1,2,3,4]});
     merkel.collection(input).add({name:filename})
+    let tagIstVorhanden = false;
+    merkel.valueChanges().subscribe((data: any)=>{
+      if(!tagIstVorhanden){
+        for (const d of data.subcollections) {
+          console.log(d);
+          if(d === input){
+            tagIstVorhanden = true;
+          }
+        }
+        if(!tagIstVorhanden){
+          data.subcollections.push(input);
+        }
+        console.log(data.subcollections);
+        merkel.set({subcollections: data.subcollections});
+      }
+    });
 }
 
   readFiles(hashtagString: any) {
@@ -50,8 +63,34 @@ export class CrudService {
     });
   }
 
-  readPersonalHashtags(): any{
-    return this.firestore.collection("users").doc("fabjon");
+  readPersonalTagNames(): any{
+    //return this.firestore.collection("users").doc("fabjon");
+    this.firestore.collection("users").doc("fabjon").valueChanges().subscribe((data:any)=>{
+      this.setPersonalTagNames(data.subcollections);
+      const tagNames = data.subcollections;
+    });
+  }
+
+  readPersonalTags(tagName: any) {
+      this.firestore.collection("users").doc("fabjon").collection(tagName).valueChanges().subscribe((data:any)=>{
+        this.setPersonalTags(data)
+      });
+  }
+
+  getPersonalTagNames() {
+    return this.personalTagNames;
+  }
+
+  setPersonalTagNames(element:[]) {
+    this.personalTagNames.next(element);
+  }
+
+  getPersonalTags() {
+    return this.personalTags;
+  }
+
+  setPersonalTags(element:any) {
+    this.personalTags.next(element);
   }
 
   setFileName(element:[]) {

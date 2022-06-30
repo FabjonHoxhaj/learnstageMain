@@ -19,7 +19,7 @@ export class AsideTagsComponent implements OnInit {
       for (let i of Object.values(items))
             this.arraySet.add(i)
     })
-    this.item.readPersonalHashtags().subscribe((data: any) => {
+    this.item.readHashtags().subscribe((data: any) => {
       this.personalTags = data;
       console.log(this.personalTags);
     });
