@@ -1,4 +1,5 @@
-<ul>
-    <li *ngFor="let tagName of personalTagNames">
-        <div class="items" [routerLink]="['/tagContent', tagName]">{{tagName}}</div></li>
-</ul>
+
+    <div class="container" *ngFor="let tagName of personalTagNames">
+        <a class="tagName" [routerLink]="['/tagContent', tagName]">{{tagName}}</a>
+    </div>
+
