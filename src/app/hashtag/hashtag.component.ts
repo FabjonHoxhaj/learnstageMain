@@ -11,7 +11,6 @@ export class HashtagComponent implements OnInit {
   constructor(private item: CrudService) { }
 
   arraySet: any = new Set();
-  personalTags: []= [];
   isHidden: boolean = false;
 
 
@@ -21,10 +20,6 @@ export class HashtagComponent implements OnInit {
       for (let i of Object.values(items))
             this.arraySet.add(i)
     })
-    this.item.readPersonalHashtags().subscribe((data: any) => {
-      this.personalTags = data;
-      console.log(this.personalTags);
-    });
   }
 
 

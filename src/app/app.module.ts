@@ -25,6 +25,7 @@ import { StarRatingComponent } from './star-rating/star-rating.component';
 import { HamburgerTagComponent } from './hamburger-tag/hamburger-tag.component';
 import { MyTagsComponent } from './my-tags/my-tags.component';
 import { TagStudentsComponent } from './tag-students/tag-students.component';
+import { TagContentComponent } from './tag-content/tag-content.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { TagStudentsComponent } from './tag-students/tag-students.component';
     StarRatingComponent,
     HamburgerTagComponent,
     MyTagsComponent,
-    TagStudentsComponent
+    TagStudentsComponent,
+    TagContentComponent
   ],
   imports: [
     BrowserModule,

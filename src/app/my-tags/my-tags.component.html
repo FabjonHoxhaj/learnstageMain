@@ -1,1 +1,5 @@
-<p>my-tags works!</p>
+
+    <div class="container" *ngFor="let tagName of personalTagNames">
+        <a class="tagName" [routerLink]="['/tagContent', tagName]">{{tagName}}</a>
+    </div>
+

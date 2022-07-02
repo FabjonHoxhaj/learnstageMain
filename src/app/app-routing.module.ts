@@ -8,6 +8,7 @@ import { HashtagComponent } from './hashtag/hashtag.component';
 import { HashtagMaterialsComponent } from './hashtag-materials/hashtag-materials.component';
 import { TagStudentsComponent } from './tag-students/tag-students.component';
 import { MyTagsComponent } from './my-tags/my-tags.component';
+import { TagContentComponent } from './tag-content/tag-content.component';
 
 const routes: Routes = [{ path: "", redirectTo: "home", pathMatch: "full" },
 { path: "home", component: HomeComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [{ path: "", redirectTo: "home", pathMatch: "full" },
 { path: "materials/:name", component: HashtagMaterialsComponent },
 { path: "datenschutz", component: DatenschutzComponent },
 { path: "tagStudents", component: TagStudentsComponent},
-{ path: "myTags", component: MyTagsComponent}];
+{ path: "myTags", component: MyTagsComponent},
+{ path: "tagContent/:tag", component: TagContentComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
