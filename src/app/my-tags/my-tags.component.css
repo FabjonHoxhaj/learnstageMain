@@ -13,3 +13,7 @@
     padding: 10px;
     text-decoration: none;
 }
+
+.line {
+    border-top: 1.8px solid #808080;
+}

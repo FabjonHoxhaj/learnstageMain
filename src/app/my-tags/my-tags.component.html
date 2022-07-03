@@ -1,5 +1,7 @@
 
     <div class="container" *ngFor="let tagName of personalTagNames">
+        <div class="line"></div> 
+        <br>
         <a class="tagName" [routerLink]="['/tagContent', tagName]">{{tagName}}</a>
     </div>
 
