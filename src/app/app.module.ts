@@ -26,6 +26,7 @@ import { HamburgerTagComponent } from './hamburger-tag/hamburger-tag.component';
 import { MyTagsComponent } from './my-tags/my-tags.component';
 import { TagStudentsComponent } from './tag-students/tag-students.component';
 import { TagContentComponent } from './tag-content/tag-content.component';
+import { HamburgerDeleteComponent } from './hamburger-delete/hamburger-delete.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { TagContentComponent } from './tag-content/tag-content.component';
     HamburgerTagComponent,
     MyTagsComponent,
     TagStudentsComponent,
-    TagContentComponent
+    TagContentComponent,
+    HamburgerDeleteComponent
   ],
   imports: [
     BrowserModule,

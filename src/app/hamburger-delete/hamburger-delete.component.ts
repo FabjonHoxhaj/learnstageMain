@@ -1,13 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CrudService } from '../crud.service';
 
-
 @Component({
-  selector: 'app-hamburger-tag',
-  templateUrl: './hamburger-tag.component.html',
-  styleUrls: ['./hamburger-tag.component.css']
+  selector: 'app-hamburger-delete',
+  templateUrl: './hamburger-delete.component.html',
+  styleUrls: ['./hamburger-delete.component.css']
 })
-export class HamburgerTagComponent implements OnInit {
+export class HamburgerDeleteComponent implements OnInit {
+
   @Input() filename: any = "";
 
   menuHidden: boolean = true;
@@ -52,7 +52,7 @@ export class HamburgerTagComponent implements OnInit {
     this.closeHidden = false;
 }
 
-createTag() {
+deleteTag() {
   const input = (<HTMLInputElement>document.getElementById("inputValue")).value;
   this.crud.createPersonalTag(input, this.filename);
   console.log(input);

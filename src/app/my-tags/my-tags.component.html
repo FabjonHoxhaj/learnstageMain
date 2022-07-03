@@ -1,5 +1,9 @@
 
     <div class="container" *ngFor="let tagName of personalTagNames">
+        <hr>
+        <br>
         <a class="tagName" [routerLink]="['/tagContent', tagName]">{{tagName}}</a>
+        <div class="containerHam"><app-hamburger-delete></app-hamburger-delete></div>
     </div>
+ 
 

@@ -1,0 +1,28 @@
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<div (click)="showMenu()" class="container">
+	<div *ngIf="hamburgerHide==true" class="hamburger" id="hamburger-1">
+		<span class="line"></span>
+		<span class="line"></span>
+		<span class="line"></span>
+	</div>
+	<div *ngIf="closeHidden==true">
+      <span class="material-icons">close</span>
+	</div>
+</div>
+
+<div *ngIf="overlayHide==true">
+    <div class="overlay"></div>
+    <div class="dialogTag">
+        <div class="headlineCont"><h4>Wollen Sie den Tag und den damit verbundenen Inhalt wirklich löschen?</h4></div>
+       <span class="close" (click)="closeModal()">&times;</span>
+       <br>
+       <div class="btnCon"><button (click)="deleteTag()" class="btnModal">Löschen</button></div>
+   </div>
+</div>
+
+<div class="dropdown-content" *ngIf="menuHidden==false">
+   <a (click)="tagging()">Tag löschen</a>
+</div>
