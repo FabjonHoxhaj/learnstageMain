@@ -30,7 +30,7 @@ export class CrudService {
       merkel.doc(inputSplit[1]).set({name: input})
   }
 
-  createPersonalHashtag(input: string, filename: string) {
+  createPersonalTag(input: string, filename: string) {
     const merkel = this.firestore.collection("users").doc("fabjon");
     merkel.collection(input).add({name:filename})
     let tagIstVorhanden = false;

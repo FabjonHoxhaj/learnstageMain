@@ -17,3 +17,9 @@
 .line {
     border-top: 1.8px solid #808080;
 }
+
+.containerHam {
+    display: relative;
+    margin-left: 700px;
+    padding-bottom: 20px;
+}
