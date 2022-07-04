@@ -38,7 +38,7 @@ export class CrudService {
       if(!tagIstVorhanden){
         for (const d of data.subcollections) {
           console.log(d);
-          if(d === input){
+          if(d === input) {
             tagIstVorhanden = true;
           }
         }
