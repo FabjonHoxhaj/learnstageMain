@@ -9,17 +9,38 @@ import { HashtagMaterialsComponent } from './hashtag-materials/hashtag-materials
 import { TagStudentsComponent } from './tag-students/tag-students.component';
 import { MyTagsComponent } from './my-tags/my-tags.component';
 import { TagContentComponent } from './tag-content/tag-content.component';
+import { LoginComponent } from './login/login.component';
+import { UserResolver } from './user.resolver';
 
-const routes: Routes = [{ path: "", redirectTo: "home", pathMatch: "full" },
-{ path: "home", component: HomeComponent },
-{ path: "contact", component: ContactFormComponent },
-{ path: "imp", component: ImpressumComponent },
-{ path: "hashtag", component: HashtagComponent },
-{ path: "materials/:name", component: HashtagMaterialsComponent },
-{ path: "datenschutz", component: DatenschutzComponent },
-{ path: "tagStudents", component: TagStudentsComponent},
-{ path: "myTags", component: MyTagsComponent},
-{ path: "tagContent/:tag", component: TagContentComponent}];
+const routes: Routes = [{ path: "", redirectTo: "login", pathMatch: "full" },
+{ path: "login", component: LoginComponent },
+{ path: "home", component: HomeComponent, resolve: {
+  isLoggedIn: UserResolver
+} },
+{ path: "contact", component: ContactFormComponent, resolve: {
+  isLoggedIn: UserResolver
+} },
+{ path: "imp", component: ImpressumComponent, resolve: {
+  isLoggedIn: UserResolver
+} },
+{ path: "hashtag", component: HashtagComponent, resolve: {
+  isLoggedIn: UserResolver
+} },
+{ path: "materials/:name", component: HashtagMaterialsComponent, resolve: {
+  isLoggedIn: UserResolver
+} },
+{ path: "datenschutz", component: DatenschutzComponent, resolve: {
+  isLoggedIn: UserResolver
+} },
+{ path: "tagStudents", component: TagStudentsComponent, resolve: {
+  isLoggedIn: UserResolver
+}},
+{ path: "myTags", component: MyTagsComponent, resolve: {
+  isLoggedIn: UserResolver
+}},
+{ path: "tagContent/:tag", component: TagContentComponent, resolve: {
+  isLoggedIn: UserResolver
+}}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

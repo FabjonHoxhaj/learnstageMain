@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { getAuth } from "firebase/auth";
+import { AuthService } from "../auth.service";
 
 @Component({
   selector: 'app-tag-students',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TagStudentsComponent implements OnInit {
 
-  constructor() { }
+  user = 'fabjon';
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+  this.authService.checkUser();
   }
 
 }

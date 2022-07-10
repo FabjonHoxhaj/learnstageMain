@@ -27,6 +27,7 @@ import { MyTagsComponent } from './my-tags/my-tags.component';
 import { TagStudentsComponent } from './tag-students/tag-students.component';
 import { TagContentComponent } from './tag-content/tag-content.component';
 import { HamburgerDeleteComponent } from './hamburger-delete/hamburger-delete.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { HamburgerDeleteComponent } from './hamburger-delete/hamburger-delete.co
     MyTagsComponent,
     TagStudentsComponent,
     TagContentComponent,
-    HamburgerDeleteComponent
+    HamburgerDeleteComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,7 @@ import { HamburgerDeleteComponent } from './hamburger-delete/hamburger-delete.co
     AngularFirestoreModule,
     AngularFireStorageModule
   ],
-  providers: [],
+  providers: [LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
