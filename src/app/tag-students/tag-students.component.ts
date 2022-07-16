@@ -10,12 +10,9 @@ import { AuthService } from "../auth.service";
 })
 export class TagStudentsComponent implements OnInit {
 
-  user = 'fabjon';
-
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-  this.authService.checkUser();
   }
 
 }

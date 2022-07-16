@@ -13,7 +13,18 @@
     </div>
 
     <div class="reg" style="background-color:#f1f1f1">
-        <button type="button" class="regbtn">Registrieren</button>
+        <button type="button" class="regbtn" (click)="newUser()">Registrieren</button>
     </div>
     </form>
+
+    <div *ngIf="overlayHide==true">
+        <div class="overlay"></div>
+        <div class="dialogTag">
+            <div class="headlineCont"><h2>Regestierung</h2></div>
+           <span class="close" (click)="closeModal()">&times;</span>
+           <input id="inputUser" type="text"><br>
+           <input id="inputPassword" type="text"><br>
+           <div class="btnCon"><button (click)="regUser()" class="btnModal">Regestrieren</button></div>
+       </div>
+    </div>
 </body>

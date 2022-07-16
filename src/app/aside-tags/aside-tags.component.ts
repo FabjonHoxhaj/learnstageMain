@@ -21,7 +21,6 @@ export class AsideTagsComponent implements OnInit {
     })
     this.item.readHashtags().subscribe((data: any) => {
       this.personalTags = data;
-      console.log(this.personalTags);
     });
   }
 

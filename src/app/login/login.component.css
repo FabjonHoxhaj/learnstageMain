@@ -65,3 +65,64 @@ span.psw {
      width: 100%;
   }
 }
+
+
+
+
+
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #00000099;
+}
+
+.dialogTag {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 25px;
+  background-color: white;
+  border-radius: 8px;
+  color: black;
+  box-shadow: 8px 8px 16px rgba(255, 255, 255, 0.1);
+}
+
+.btnModal {
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  background-color: #e4d5c5;
+  color: #002b44;
+}
+
+.btnCon {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  font-size: 32px;
+  line-height: 6px;
+  color: rgba(0, 0, 0, 0.6);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+h2 {
+  color: #002b44;
+}
+
+.headlineCont {
+  display: flex;
+  justify-content: center;
+}
