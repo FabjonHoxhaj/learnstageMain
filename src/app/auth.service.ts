@@ -13,9 +13,27 @@ export class AuthService {
   userTest = 'fabjon';
   passwordTest = 'test';
   private readonly isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private readonly userName: BehaviorSubject<string> = new BehaviorSubject<string>("");
+  private readonly userPassword: BehaviorSubject<string> = new BehaviorSubject<string>("");
 
   constructor(public auth: AngularFireAuth, private firestore: AngularFirestore) { 
     this.checkUser();
+  }
+
+  getUsername(): BehaviorSubject<string> {
+    return this.userName;
+  }
+
+  setUsername(value: string): void {
+    this.userName.next(value);
+  }
+
+  getPassword(): BehaviorSubject<string> {
+    return this.userPassword;
+  }
+
+  setPassword(value: string): void {
+    this.userPassword.next(value);
   }
 
   getIsLoggedIn(): BehaviorSubject<boolean> {
@@ -31,11 +49,13 @@ export class AuthService {
       for(let i of Object.values(users)) {
         const username = i.payload.doc.id;
         const userpassword = i.payload.doc.get("password");
-        if(this.userTest === username && this.passwordTest === userpassword){
+        if(this.userName.getValue.toString() === username && this.userPassword.getValue.toString() === userpassword){
           this.setIsLoggedIn(true);
+          console.log('is loggend in!')
           // console.log(username);
           // console.log(userpassword);
         } else {
+          console.log('is NOT loggend in!')
           this.setIsLoggedIn(false);
         }
       }
