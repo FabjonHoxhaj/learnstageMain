@@ -17,7 +17,9 @@ import { AuthService } from './auth.service';
 
   fileName: BehaviorSubject<[]> = new BehaviorSubject([]);
   personalTagNames: BehaviorSubject<[]> = new BehaviorSubject([]);
+  sharedTagNames: BehaviorSubject<[]> = new BehaviorSubject([]);
   personalTags: BehaviorSubject<[]> = new BehaviorSubject([]);
+  sharedTags: BehaviorSubject<[]> = new BehaviorSubject([]);
   hashtag: BehaviorSubject<string> = new BehaviorSubject("");
   downloadURL: BehaviorSubject<string> = new BehaviorSubject(" ");
   registrationProcess: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
@@ -47,8 +49,8 @@ import { AuthService } from './auth.service';
 updateSubCollections(tagIstVorhanden: boolean, input: string){
   const merkel = this.firestore.collection("users").doc(this.user.value);
   merkel.valueChanges().subscribe((data: any)=>{
-    if(!data.subcollections){
-      merkel.set({subcollections: []});
+    if(!data.subcollections || (data.subcollections.length === 0)){
+      merkel.set({subcollections: [], password: data.password});
     }
     const subCollections = data.subcollections;
     if(!tagIstVorhanden){
@@ -76,7 +78,7 @@ deleteInSubCollections(merkel: any, tagIstVorhanden: boolean, input: string){
       if(tagIstVorhanden){
         data.subcollections.splice(data.subcollections.indexOf(input),1);
       }
-      merkel.set({subcollections: data.subcollections});
+      merkel.set({subcollections: data.subcollections, password: data.password});
     }
   });
 }
@@ -131,8 +133,47 @@ deleteInSubCollections(merkel: any, tagIstVorhanden: boolean, input: string){
     merkel.doc(name).set({password: pwd});
   }
 
+  createSharedTag(user: string, tagName: string) {
+    const merkel = this.firestore.collection("users").doc(user);
+    this.firestore.collection("users").doc(this.user.value).collection(tagName).valueChanges().subscribe((data:any)=>{
+      const files = [];
+      for(let i of Object.values(data)) {
+        files.push(i)
+      }
+      files.forEach((element: any) => {
+        merkel.collection(tagName).add({name:element.name})
+      });
+      let tagIstVorhanden = false;
+      this.updateSharedCollections(user, tagIstVorhanden, tagName);
+    });
+}
+
+  updateSharedCollections(user: string, tagIstVorhanden: boolean, input: string){
+    let isUpdating = true;
+    const merkel = this.firestore.collection("users").doc(user);
+    merkel.valueChanges().subscribe((data: any)=>{
+      if(isUpdating){
+        if(!data.subcollections || (data.subcollections.length === 0)){
+          merkel.set({subcollections: [], password: data.password});
+        }
+        const subCollections = data.subcollections;
+        if(!tagIstVorhanden){
+          for (const d of data.subcollections) {
+            if(d === input) {
+              tagIstVorhanden = true;
+            }
+          }
+          if(!tagIstVorhanden){
+            subCollections.push(input);
+          }
+          merkel.set({subcollections: subCollections, password: data.password});
+          isUpdating = false;
+      }
+      }
+    });
+  }
+
   readPersonalTagNames(): any{
-    //return this.firestore.collection("users").doc(this.user.value);
     this.firestore.collection("users").doc(this.user.value).valueChanges().subscribe((data:any)=>{
       this.setPersonalTagNames(data.subcollections);
       const tagNames = data.subcollections;
@@ -144,6 +185,20 @@ deleteInSubCollections(merkel: any, tagIstVorhanden: boolean, input: string){
         this.setPersonalTags(data)
       });
   }
+
+  readSharedTagNames(): any{
+    this.firestore.collection("users").doc(this.user.value).valueChanges().subscribe((data:any)=>{
+      this.setSharedTagNames(data.sharedCollections);
+      const tagNames = data.sharedCollections;
+    });
+  }
+
+  
+  readSharedTags(tagName: any) {
+    this.firestore.collection("users").doc(this.user.value).collection(tagName).valueChanges().subscribe((data:any)=>{
+      this.setSharedTags(data)
+    });
+}
 
   getRegProcess() {
     return this.registrationProcess;
@@ -161,11 +216,27 @@ deleteInSubCollections(merkel: any, tagIstVorhanden: boolean, input: string){
     this.personalTagNames.next(element);
   }
 
+  getSharedTagNames() {
+    return this.sharedTagNames;
+  }
+
+  setSharedTagNames(element:[]) {
+    this.sharedTagNames.next(element);
+  }
+
   getPersonalTags() {
     return this.personalTags;
   }
 
   setPersonalTags(element:any) {
+    this.personalTags.next(element);
+  }
+
+  getSharedTags() {
+    return this.personalTags;
+  }
+
+  setSharedTags(element:any) {
     this.personalTags.next(element);
   }
 

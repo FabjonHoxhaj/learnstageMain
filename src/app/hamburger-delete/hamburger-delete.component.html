@@ -23,6 +23,17 @@
    </div>
 </div>
 
+<div *ngIf="overlayShared==true">
+    <div class="overlay"></div>
+    <div class="dialogTag">
+        <div class="headlineCont"><h2>Mit wem wollen Sie den Tag teilen?</h2></div>
+       <span class="close" (click)="closeSharedModal()">&times;</span>
+       <input id="inputUser" type="text"><br>
+       <div class="btnCon"><button class="btnModal" (click) ="sharingTag()">Tag teilen</button></div>
+   </div>
+</div>
+
 <div class="dropdown-content" *ngIf="menuHidden==false">
    <a (click)="tagging()">Tag löschen</a>
+   <a (click)="shareTag()">Tag teilen</a>
 </div>
