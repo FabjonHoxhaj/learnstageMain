@@ -8,13 +8,13 @@ import { AuthService } from '../auth.service';
 })
 export class LogoComponent implements OnInit {
 
-  user = '';
+  user = "";
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.authService.getUsername().subscribe((user)=>{
-      this.user = user;
+      this.user = "Angemeldet als: " + user;
     });
   }
 

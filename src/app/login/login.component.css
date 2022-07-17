@@ -19,6 +19,7 @@ button {
   border: none;
   cursor: pointer;
   width: 100%;
+  font-size: 15px;
 }
 
 button:hover {
@@ -55,7 +56,7 @@ span.psw {
   padding-top: 16px;
 }
 
-/* Change styles for span and cancel button on extra small screens */
+
 @media screen and (max-width: 300px) {
   span.psw {
      display: block;
@@ -65,11 +66,6 @@ span.psw {
      width: 100%;
   }
 }
-
-
-
-
-
 
 
 .overlay {
@@ -120,6 +116,8 @@ span.psw {
 
 h2 {
   color: #002b44;
+  display: flex;
+  justify-content: center;
 }
 
 .headlineCont {
