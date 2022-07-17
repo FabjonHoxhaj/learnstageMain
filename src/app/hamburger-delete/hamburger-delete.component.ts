@@ -16,6 +16,7 @@ export class HamburgerDeleteComponent implements OnInit {
   zaehler: number = 0;
   buttonHide: boolean = true;
   overlayHide: boolean = false;
+  overlayShared: boolean = false;
 
 
   constructor(private crud: CrudService) { }
@@ -57,5 +58,22 @@ deleteTag() {
   this.hamburgerHide = false;
   this.closeModal();
 }
+
+shareTag() {
+  this.overlayShared =true;
+}
+
+closeSharedModal() {
+  this.overlayShared = false;
+}
+
+sharingTag() {
+  let inputUser = (<HTMLInputElement>document.getElementById("inputUser")).value;
+  this.crud.createSharedTag(inputUser, this.filename);
+  this.hamburgerHide = false;
+  this.closeSharedModal();
+}
+
+
 
 }

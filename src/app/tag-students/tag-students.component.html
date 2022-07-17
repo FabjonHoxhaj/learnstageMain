@@ -1,1 +1,9 @@
-<p>tag-students works!</p>
+
+    <div class="container" *ngFor="let tagName of sharedTagNames">
+        <hr>
+        <br>
+        <a class="tagName" [routerLink]="['/tagContent', tagName]">{{tagName}}</a>
+        <div class="containerHam"><app-hamburger-delete [filename]=tagName></app-hamburger-delete></div>
+    </div>
+ 
+
