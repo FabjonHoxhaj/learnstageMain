@@ -27,8 +27,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
   login() {
     let username = (<HTMLInputElement>document.getElementById("uname")).value;
     let userpassword = (<HTMLInputElement>document.getElementById("psw")).value;
-    //this.authService.setUsername(username);
-    //this.authService.setPassword(userpassword);
     this.authService.checkUser(username, userpassword);
     this.router.navigateByUrl('home');
   }
@@ -43,7 +41,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   closeModal() {
-
+    this.overlayHide = false;
   }
 
   newUser() {
