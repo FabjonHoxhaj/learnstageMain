@@ -54,7 +54,6 @@ export class HamburgerDeleteComponent implements OnInit {
 
 deleteTag() {
   this.crud.deletePersonalTag(this.filename);
-  // console.log(input);
   this.hamburgerHide = false;
   this.closeModal();
 }

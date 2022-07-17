@@ -61,7 +61,7 @@ onStarLeave() {
 
 onStarClicked(starId: any) {
   this.rating =starId;
-  console.log(this.rating);
+
 }
 
 
@@ -70,7 +70,6 @@ closeModal() {
 }
 
 createTag() {
-  console.log("Test");
 }
 
 onTagging(buttonHide: boolean) {

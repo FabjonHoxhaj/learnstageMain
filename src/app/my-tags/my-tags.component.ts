@@ -16,7 +16,6 @@ export class MyTagsComponent implements OnInit {
     this.item.readPersonalTagNames();
     this.item.getPersonalTagNames().subscribe((data:any)=>{
       this.personalTagNames = data;
-      console.log(this.personalTagNames);
     })
   }
 
